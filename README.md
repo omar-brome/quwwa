@@ -14,19 +14,26 @@ A mobile-first gym tracker with an AI coach. Two layers, deliberately separate:
 - **Coaching layer** — Claude reads your history and tells you what to do next and why:
   next-session plans, plateau detection, weekly reviews, and deload checks.
 
+Exercise pages also include a **form-video search**: type any movement ("barbell row"),
+get YouTube results, and watch them inline — no API key needed.
+
 **Stack:** React 18 + TypeScript + Vite + Tailwind, TanStack Query, Zustand ·
 FastAPI + SQLAlchemy 2.0 (async) + Alembic · PostgreSQL (SQLite fallback for dev) ·
 Anthropic Claude API · Docker Compose.
 
 ## Screens
 
-| AI session plan | Weekly review | Volume vs targets | Exercise picker |
-| :---: | :---: | :---: | :---: |
-| ![Coaching](docs/screenshots/01-home-coaching.png) | ![Weekly review](docs/screenshots/02-weekly-review.png) | ![Volume](docs/screenshots/03-volume-history.png) | ![Picker](docs/screenshots/04-picker.png) |
+| AI session plan | Weekly review | Volume vs targets |
+| :---: | :---: | :---: |
+| ![Coaching](docs/screenshots/01-home-coaching.png) | ![Weekly review](docs/screenshots/02-weekly-review.png) | ![Volume](docs/screenshots/03-volume-history.png) |
 
-| Set logging | Session summary | Plateau detection | Profile |
-| :---: | :---: | :---: | :---: |
-| ![Logging](docs/screenshots/05-logging.png) | ![Summary](docs/screenshots/06-session-summary.png) | ![Plateau](docs/screenshots/07-exercise-plateau.png) | ![Profile](docs/screenshots/08-profile.png) |
+| Exercise picker | Set logging | Session summary |
+| :---: | :---: | :---: |
+| ![Picker](docs/screenshots/04-picker.png) | ![Logging](docs/screenshots/05-logging.png) | ![Summary](docs/screenshots/06-session-summary.png) |
+
+| Plateau detection | Form videos | Profile |
+| :---: | :---: | :---: |
+| ![Plateau](docs/screenshots/07-exercise-plateau.png) | ![Form videos](docs/screenshots/09-form-videos.png) | ![Profile](docs/screenshots/08-profile.png) |
 
 > Screens show demo data from `backend/scripts/seed_demo.py` (run it to explore the app
 > with realistic history; `--clean` wipes it). Assets are reproducible via
@@ -78,6 +85,7 @@ you take to the gym).
 | `DATABASE_URL`      | `sqlite+aiosqlite:///./quwwa.db` | Compose sets the Postgres URL                |
 | `ANTHROPIC_API_KEY` | _(empty)_                        | Required for AI coaching                     |
 | `ANTHROPIC_MODEL`   | `claude-sonnet-4-6`              | Swap to `claude-opus-4-8` for deeper coaching |
+| `YOUTUBE_API_KEY`   | _(empty)_                        | Optional: form-video search uses the official Data API when set, otherwise parses the public results page |
 
 > The original spec pinned `claude-sonnet-4-20250514`, which is deprecated (retires
 > 2026-06-15). `claude-sonnet-4-6` is its official replacement and the right
@@ -163,6 +171,8 @@ All routes are under `/api` (interactive docs at http://localhost:8000/docs):
 - `GET /stats/weekly-volume` — working sets per muscle vs. recommended ranges
 - `GET /coaching/*` + `POST /coaching/*/generate` — see table above; plus
   `GET /coaching/plateau-alerts` for the home-screen badges
+- `GET /videos/search?q=barbell+row+form` — YouTube form-video search (results cached
+  for a day; playback embeds `youtube-nocookie.com`)
 - `POST /import/csv`
 
 ## Project notes

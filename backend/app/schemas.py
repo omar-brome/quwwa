@@ -216,6 +216,23 @@ class DeloadAdvice(BaseModel):
 
 
 # ---------------------------------------------------------------------------
+# Form videos (YouTube search)
+
+
+class VideoResult(BaseModel):
+    video_id: str
+    title: str
+    channel: str | None = None
+    duration: str | None = None
+    thumbnail_url: str
+
+
+class VideoSearchOut(BaseModel):
+    items: list[VideoResult]
+    source: Literal["api", "scrape", "cache"]
+
+
+# ---------------------------------------------------------------------------
 # CSV import
 
 

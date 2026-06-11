@@ -5,7 +5,16 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import get_settings
 from app.database import Base, engine, session_factory
-from app.routers import coaching, exercises, importer, profile, sessions, sets, stats
+from app.routers import (
+    coaching,
+    exercises,
+    importer,
+    profile,
+    sessions,
+    sets,
+    stats,
+    videos,
+)
 from app.seed import ensure_default_profile, seed_exercises
 
 
@@ -41,6 +50,7 @@ for r in (
     stats.router,
     coaching.router,
     importer.router,
+    videos.router,
 ):
     app.include_router(r, prefix="/api")
 

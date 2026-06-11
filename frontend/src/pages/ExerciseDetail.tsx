@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 
 import { E1rmChart } from "@/components/E1rmChart";
+import { ExerciseVideos } from "@/components/ExerciseVideos";
 import { PlateauCard } from "@/components/PlateauCard";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardTitle } from "@/components/ui/card";
@@ -43,6 +44,8 @@ export function ExerciseDetail() {
         <CardTitle className="mb-2">Estimated 1RM ({units})</CardTitle>
         <E1rmChart sessions={data.sessions} units={units} />
       </Card>
+
+      <ExerciseVideos exerciseName={data.exercise.name} />
 
       <section className="space-y-2">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">

@@ -14,6 +14,10 @@ class Settings(BaseSettings):
     anthropic_model: str = "claude-sonnet-4-6"
     coaching_max_tokens: int = 8192
 
+    # Optional: form-video search uses the official YouTube Data API when set,
+    # otherwise falls back to parsing the public results page (no key needed).
+    youtube_api_key: str | None = None
+
     # Coaching snapshots are reused for this long unless a new session is logged.
     coaching_cache_hours: int = 6
 

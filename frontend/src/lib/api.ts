@@ -179,6 +179,14 @@ export interface ImportResult {
   warnings: string[];
 }
 
+export interface VideoResult {
+  video_id: string;
+  title: string;
+  channel: string | null;
+  duration: string | null;
+  thumbnail_url: string;
+}
+
 // ---------------------------------------------------------------------------
 // Calls
 
@@ -253,6 +261,11 @@ export const api = {
     form.append("file", file);
     return request<ImportResult>("/import/csv", { method: "POST", body: form });
   },
+
+  searchVideos: (q: string) =>
+    request<{ items: VideoResult[]; source: "api" | "scrape" | "cache" }>(
+      `/videos/search?q=${encodeURIComponent(q)}`,
+    ),
 };
 
 export const MUSCLE_GROUPS = [
