@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 240 14% 5%;
+  --foreground: 40 25% 95%;
+  --card: 240 11% 8%;
+  --card-foreground: 40 25% 95%;
+  --muted: 240 8% 14%;
+  --muted-foreground: 240 6% 64%;
+  --border: 240 8% 17%;
+  --primary: 43 91% 50%;
+  --primary-foreground: 30 25% 8%;
+  --destructive: 0 72% 55%;
+  --success: 152 55% 45%;
+  --warning: 36 90% 55%;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  overscroll-behavior-y: none;
+}
+
+input,
+textarea,
+select {
+  font-size: 16px; /* prevent iOS zoom on focus */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.stream-cursor::after {
+  content: "▍";
+  animation: blink 1s step-start infinite;
+  color: hsl(var(--primary));
+}

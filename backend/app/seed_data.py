@@ -1,0 +1,76 @@
+"""Seeded exercise library: (name, muscle_groups, category, equipment)."""
+
+EXERCISES: list[tuple[str, list[str], str, str]] = [
+    # Chest
+    ("Barbell Bench Press", ["chest", "triceps", "shoulders"], "compound", "barbell"),
+    ("Incline Barbell Bench Press", ["chest", "shoulders", "triceps"], "compound", "barbell"),
+    ("Dumbbell Bench Press", ["chest", "triceps", "shoulders"], "compound", "dumbbell"),
+    ("Incline Dumbbell Press", ["chest", "shoulders", "triceps"], "compound", "dumbbell"),
+    ("Machine Chest Press", ["chest", "triceps"], "compound", "machine"),
+    ("Cable Fly", ["chest"], "isolation", "cable"),
+    ("Pec Deck", ["chest"], "isolation", "machine"),
+    ("Push-Up", ["chest", "triceps", "core"], "compound", "bodyweight"),
+    ("Dip", ["chest", "triceps"], "compound", "bodyweight"),
+    # Back
+    ("Deadlift", ["back", "hamstrings", "glutes"], "compound", "barbell"),
+    ("Barbell Row", ["back", "biceps"], "compound", "barbell"),
+    ("Dumbbell Row", ["back", "biceps"], "compound", "dumbbell"),
+    ("Pull-Up", ["back", "biceps"], "compound", "bodyweight"),
+    ("Chin-Up", ["back", "biceps"], "compound", "bodyweight"),
+    ("Lat Pulldown", ["back", "biceps"], "compound", "cable"),
+    ("Seated Cable Row", ["back", "biceps"], "compound", "cable"),
+    ("T-Bar Row", ["back", "biceps"], "compound", "machine"),
+    ("Barbell Shrug", ["back"], "isolation", "barbell"),
+    # Shoulders
+    ("Overhead Press", ["shoulders", "triceps"], "compound", "barbell"),
+    ("Seated Dumbbell Shoulder Press", ["shoulders", "triceps"], "compound", "dumbbell"),
+    ("Arnold Press", ["shoulders", "triceps"], "compound", "dumbbell"),
+    ("Lateral Raise", ["shoulders"], "isolation", "dumbbell"),
+    ("Cable Lateral Raise", ["shoulders"], "isolation", "cable"),
+    ("Rear Delt Fly", ["shoulders", "back"], "isolation", "dumbbell"),
+    ("Face Pull", ["shoulders", "back"], "isolation", "cable"),
+    ("Upright Row", ["shoulders", "biceps"], "compound", "barbell"),
+    # Quads
+    ("Back Squat", ["quads", "glutes", "core"], "compound", "barbell"),
+    ("Front Squat", ["quads", "glutes", "core"], "compound", "barbell"),
+    ("Goblet Squat", ["quads", "glutes"], "compound", "dumbbell"),
+    ("Leg Press", ["quads", "glutes"], "compound", "machine"),
+    ("Hack Squat", ["quads", "glutes"], "compound", "machine"),
+    ("Bulgarian Split Squat", ["quads", "glutes"], "compound", "dumbbell"),
+    ("Walking Lunge", ["quads", "glutes"], "compound", "dumbbell"),
+    ("Leg Extension", ["quads"], "isolation", "machine"),
+    # Hamstrings / glutes
+    ("Romanian Deadlift", ["hamstrings", "glutes", "back"], "compound", "barbell"),
+    ("Stiff-Leg Deadlift", ["hamstrings", "glutes"], "compound", "barbell"),
+    ("Good Morning", ["hamstrings", "back"], "compound", "barbell"),
+    ("Lying Leg Curl", ["hamstrings"], "isolation", "machine"),
+    ("Seated Leg Curl", ["hamstrings"], "isolation", "machine"),
+    ("Hip Thrust", ["glutes", "hamstrings"], "compound", "barbell"),
+    ("Glute Bridge", ["glutes"], "isolation", "bodyweight"),
+    ("Cable Kickback", ["glutes"], "isolation", "cable"),
+    # Calves
+    ("Standing Calf Raise", ["calves"], "isolation", "machine"),
+    ("Seated Calf Raise", ["calves"], "isolation", "machine"),
+    # Biceps
+    ("Barbell Curl", ["biceps"], "isolation", "barbell"),
+    ("Dumbbell Curl", ["biceps"], "isolation", "dumbbell"),
+    ("Hammer Curl", ["biceps", "forearms"], "isolation", "dumbbell"),
+    ("Incline Dumbbell Curl", ["biceps"], "isolation", "dumbbell"),
+    ("Preacher Curl", ["biceps"], "isolation", "machine"),
+    ("Cable Curl", ["biceps"], "isolation", "cable"),
+    # Triceps
+    ("Close-Grip Bench Press", ["triceps", "chest"], "compound", "barbell"),
+    ("Skull Crusher", ["triceps"], "isolation", "barbell"),
+    ("Cable Pushdown", ["triceps"], "isolation", "cable"),
+    ("Overhead Cable Extension", ["triceps"], "isolation", "cable"),
+    ("Dumbbell Overhead Extension", ["triceps"], "isolation", "dumbbell"),
+    # Core
+    ("Plank", ["core"], "isolation", "bodyweight"),
+    ("Hanging Leg Raise", ["core"], "isolation", "bodyweight"),
+    ("Cable Crunch", ["core"], "isolation", "cable"),
+    ("Ab Wheel Rollout", ["core"], "compound", "bodyweight"),
+    # Cardio
+    ("Rowing Machine", ["back"], "cardio", "machine"),
+    ("Assault Bike", ["quads"], "cardio", "machine"),
+    ("Treadmill Run", ["quads", "calves"], "cardio", "machine"),
+]
