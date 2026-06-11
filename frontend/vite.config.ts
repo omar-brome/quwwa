@@ -17,8 +17,8 @@ export default defineConfig({
         changeOrigin: true,
       },
     },
-	 allowedHosts: [
-    "recoil-finalist-overlook.ngrok-free.dev"
-  ],
+    // Allow tunnelling the dev server (e.g. ngrok) for phone use at the gym
+    // without publishing a personal tunnel domain in the repo.
+    allowedHosts: [".ngrok-free.dev", ".ngrok-free.app"],
   },
 });
