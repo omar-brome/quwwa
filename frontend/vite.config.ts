@@ -17,5 +17,8 @@ export default defineConfig({
         changeOrigin: true,
       },
     },
+	 allowedHosts: [
+    "recoil-finalist-overlook.ngrok-free.dev"
+  ],
   },
 });

@@ -21,7 +21,9 @@ const marks = {};
 const mark = (name) => (marks[name] = (Date.now() - t0) / 1000);
 const pause = (ms) => new Promise((r) => setTimeout(r, ms));
 
-const browser = await chromium.launch();
+const browser = await chromium.launch({
+  args: ["--autoplay-policy=no-user-gesture-required"],
+});
 const context = await browser.newContext({
   viewport: { width: 390, height: 844 },
   deviceScaleFactor: 2,
@@ -97,6 +99,18 @@ await page.getByRole("link", { name: "Barbell Bench Press" }).click();
 await page.locator("svg.recharts-surface").first().waitFor({ timeout: 15000 });
 await pause(900);
 await shot("07-exercise-plateau.png");
+
+// --- Form videos: YouTube search + inline preview ---------------------------
+await page.getByText("Form videos").scrollIntoViewIfNeeded();
+await page.locator("img[src*='ytimg']").first().waitFor({ timeout: 20000 });
+await pause(900);
+await page.locator("button:has(img[src*='ytimg'])").first().click();
+await pause(7000); // let the embedded player load and start
+await page.getByText("Form videos").scrollIntoViewIfNeeded();
+await page.evaluate(() => window.scrollBy(0, -70));
+await pause(700);
+await shot("09-form-videos.png");
+await pause(1500);
 
 // --- Profile ----------------------------------------------------------------
 await page.getByRole("button", { name: "Profile" }).click();
